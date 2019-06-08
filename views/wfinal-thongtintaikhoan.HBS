@@ -1,0 +1,132 @@
+{{#section 'js'}}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script>
+  $(function () {
+    $('#txtDOB').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false,
+      mask: true,
+    });
+
+    $('#registerForm').validate({
+      rules: {
+        username: {
+          required: true,
+          remote: {
+            url: '/account/is-available'
+          }
+        },
+        password: {
+          required: true,
+          minlength: 6
+        },
+        confirm: {
+          required: true,
+          equalTo: $('[name="password"]')
+        },
+        name: {
+          required: true,
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        dob: {
+          required: true
+        },
+      },
+      messages: {
+        username: {
+          required: 'Your username is required.',
+          remote: 'Your username has been taken, please take another.'
+        },
+        password: {
+          required: 'Your password is required.',
+          minlength: 'Your password must have at least 6 characters.'
+        },
+        confirm: {
+          required: 'Your password does not match.',
+          equalTo: 'Your password does not match.'
+        },
+        name: {
+          required: 'Valid full name is required.',
+        },
+        email: {
+          required: 'Please enter a valid email address.',
+          email: 'Please enter a valid email address.'
+        },
+        dob: {
+          required: 'Valid date of birth is required.',
+        },
+      },
+      errorElement: 'small',
+      errorClass: 'help-block text-danger',
+      highlight: function (e) {
+        $(e).removeClass('is-valid').addClass('is-invalid');
+      },
+      unhighlight: function (e) {
+        $(e).removeClass('is-invalid').addClass('is-valid');
+      }
+    });
+  })
+</script>
+{{/section}}
+<div class="apartment_part">
+   <div class="container">
+      <div class="row justify-content-between align-content-center">
+         <div class="col-md-8 col-lg-7">
+            <div class="section_tittle">
+               <h1> TÊN NGƯỜI DÙNG<br>
+               <b>Người dùng</b></h1>
+            </div>
+         </div>
+         <div class="col-md-4 col-lg-5">
+            <div class="view_more_btn float-right d-none d-md-block">
+               <a href="#" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
+            </div>
+         </div>
+      </div>
+      <form action="#">
+         <div class="mt-10">
+            <label for="first_name">TÊN</label>
+            <input id="first_name"type="text" name="first_name" placeholder="First Name"
+                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
+                           class="single-input-primary">
+         </div>
+         <div class="mt-10">
+            <label for="last_name">HỌ</label>
+            <input id="last_name" type="text" name="last_name" placeholder="Last Name"
+               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
+               class="single-input-primary">
+         </div>
+         <div class="mt-10">
+            <label for="email">EMAIL</label>
+            <input id="email" type="email" name="email" placeholder="Email address"
+               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+               class="single-input-primary">
+         </div>       
+         <div class="mt-10">
+            <label for="phone">SỐ ĐIỆN THOẠI</label>
+            <input id="phone" type="number" name="phone" placeholder="Number Phone" onfocus=this.placeholder 
+               onblur=this.placeholder required class="single-input">
+         </div>
+         <div class="mt-10">
+            <label for="facebook">FACEBOOK</label>
+            <input id="facebook"type="text" name="facebook" placeholder="FACEBOOK"
+               onfocus=(this.placeholder="FACEBOOK")  onblur=(this.placeholder = 'FACEBOOK') required
+               class="single-input-primary">
+         </div>
+               <div class="mt-10">
+                  <label for="password">PASSWORD</label>
+                  <input id="password"type="password" name="password" placeholder="PASSWORD"
+                     onfocus=(this.placeholder="PASSWORD")  onblur=(this.placeholder = 'PASSWORD') required
+                     class="single-input-primary">
+               </div>
+                     <div class="mt-10">
+                        <input type="Submit" class="genric-btn success" style="margin: 20px 0px;" value="LƯU LẠI">
+                     </div>
+                  </form
+      </div>
+   </div>
